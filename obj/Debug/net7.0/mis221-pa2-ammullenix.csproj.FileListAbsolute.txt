@@ -1,0 +1,14 @@
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\bin\Debug\net7.0\mis221-pa2-ammullenix.exe
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\bin\Debug\net7.0\mis221-pa2-ammullenix.deps.json
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\bin\Debug\net7.0\mis221-pa2-ammullenix.runtimeconfig.json
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\bin\Debug\net7.0\mis221-pa2-ammullenix.dll
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\bin\Debug\net7.0\mis221-pa2-ammullenix.pdb
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\obj\Debug\net7.0\mis221-pa2-ammullenix.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\obj\Debug\net7.0\mis221-pa2-ammullenix.AssemblyInfoInputs.cache
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\obj\Debug\net7.0\mis221-pa2-ammullenix.AssemblyInfo.cs
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\obj\Debug\net7.0\mis221-pa2-ammullenix.csproj.CoreCompileInputs.cache
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\obj\Debug\net7.0\mis221-pa2-ammullenix.dll
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\obj\Debug\net7.0\refint\mis221-pa2-ammullenix.dll
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\obj\Debug\net7.0\mis221-pa2-ammullenix.pdb
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\obj\Debug\net7.0\mis221-pa2-ammullenix.genruntimeconfig.cache
+C:\Users\mulle\OneDrive - The University of Alabama\UA\MIS 221\Fall2023Source\PA2Repo\mis221-pa2-ammullenix\obj\Debug\net7.0\ref\mis221-pa2-ammullenix.dll
