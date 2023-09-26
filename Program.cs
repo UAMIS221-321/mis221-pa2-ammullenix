@@ -47,6 +47,17 @@ while(userInput != "CANCEL"){
         Pause();
     }
     userInput = EnterDirection();
+
+if(degreesTurned == 90 || degreesTurned == -270){
+    System.Console.WriteLine("You are facing East.");
+} else if (degreesTurned == 180 || degreesTurned == -180){
+    System.Console.WriteLine("You are facing South.");
+} else if (degreesTurned == 270 || degreesTurned == -90){
+    System.Console.WriteLine("You are facing West.");
+} else if (degreesTurned == 360 || degreesTurned == 0){
+    System.Console.WriteLine("You are facing North.");
+} 
+
 }
 
 if(degreesTurned == 90){
@@ -67,7 +78,7 @@ static string EnterDirection(){
 }
 
 static void DisplayVisitorFees(){
-    System.Console.WriteLine("You called I the Visitor's Fees!");
+    System.Console.WriteLine("You called Visitor's Fees!");
 }
 
 static void DisplayError(){
