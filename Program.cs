@@ -32,13 +32,42 @@ static void Route(string userChoice){
 }
 
 static void DisplayCompass(){
-    System.Console.WriteLine("You called the Compass!");
+    int degreesTurned = 0;
+
+System.Console.WriteLine("Welcome to the Compass! Let's retrace your steps.");
+string userInput = EnterDirection();
+
+while(userInput != "CANCEL"){
+    if(userInput == "right"){
+        degreesTurned += 90;
+    } else if (userInput == "left"){
+        degreesTurned = degreesTurned - 90;
+    } else {
+        DisplayError();
+        Pause();
+    }
+    userInput = EnterDirection();
+}
+
+if(degreesTurned == 90){
+    System.Console.WriteLine("You are facing East.");
+} else if (degreesTurned == 180){
+    System.Console.WriteLine("You are facing South.");
+} else if (degreesTurned == 270){
+    System.Console.WriteLine("You are facing West.");
+} else if (degreesTurned == 360){
+    System.Console.WriteLine("You are facing North.");
+} 
     Pause();
 }
 
+static string EnterDirection(){
+    System.Console.WriteLine("Did you turn right or left? Enter CANCEL to stop.");
+    return Console.ReadLine();
+}
+
 static void DisplayVisitorFees(){
-    System.Console.WriteLine("You called vistor fees!");
-    Pause();
+    System.Console.WriteLine("You called I the Visitor's Fees!");
 }
 
 static void DisplayError(){
