@@ -1,4 +1,4 @@
-﻿//***** Main *****
+﻿//***** Menu *****
 
 DisplayMenu();
 
@@ -13,7 +13,7 @@ while (userChoice != "3"){
     userChoice = Console.ReadLine();
 }
 
-// **** End Main ****
+// **** End Menu ****
 
 static void DisplayMenu(){
     System.Console.WriteLine("Welcome to the ASLS's Parks website!\n1: Compass\n2: Vistor Fees\n3: Exit");
@@ -31,6 +31,9 @@ static void Route(string userChoice){
     }
 }
 
+
+// Compass
+
 static void DisplayCompass(){
     int degreesTurned = 0;
 
@@ -47,6 +50,7 @@ while(userInput != "CANCEL"){
         Pause();
     }
     userInput = EnterDirection();
+}
 
 if(degreesTurned == 90 || degreesTurned == -270){
     System.Console.WriteLine("You are facing East.");
@@ -57,18 +61,6 @@ if(degreesTurned == 90 || degreesTurned == -270){
 } else if (degreesTurned == 360 || degreesTurned == 0){
     System.Console.WriteLine("You are facing North.");
 } 
-
-}
-
-if(degreesTurned == 90){
-    System.Console.WriteLine("You are facing East.");
-} else if (degreesTurned == 180){
-    System.Console.WriteLine("You are facing South.");
-} else if (degreesTurned == 270){
-    System.Console.WriteLine("You are facing West.");
-} else if (degreesTurned == 360){
-    System.Console.WriteLine("You are facing North.");
-} 
     Pause();
 }
 
@@ -77,9 +69,16 @@ static string EnterDirection(){
     return Console.ReadLine();
 }
 
+// End Compass
+
+//Visitor's Fees
+
 static void DisplayVisitorFees(){
     System.Console.WriteLine("You called Visitor's Fees!");
+    Pause();
 }
+
+//End Visitor Fees
 
 static void DisplayError(){
     System.Console.WriteLine("Invalid option, please enter a valid menu item");
