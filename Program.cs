@@ -47,7 +47,6 @@ while(userInput != "CANCEL"){
         degreesTurned = degreesTurned - 90;
     } else {
         DisplayError();
-        Pause();
     }
     userInput = EnterDirection();
 }
@@ -74,7 +73,64 @@ static string EnterDirection(){
 //Visitor's Fees
 
 static void DisplayVisitorFees(){
-    System.Console.WriteLine("You called Visitor's Fees!");
+    const double CHILD_DISCOUNT = 0.8;
+    const double STATE_TAX = 5;
+    const double FED_TAX = 1.09;
+    const int TICKET = 12;
+
+    int childrenNumber = 0;
+    int vehicleFee = 0;
+
+    double amountDue = 0;
+
+    System.Console.WriteLine("Welcome to Park Fees!");
+    System.Console.WriteLine("Please enter the amount of attendees.");
+    int attendeeNumber = int.Parse(Console.ReadLine());
+
+    System.Console.WriteLine("Do you have any children in your party?\n1. Yes\n2. No");
+    string userInput = Console.ReadLine();
+    if(userInput == "1"){
+        System.Console.WriteLine("Please enter the amount of children attending.");
+        childrenNumber += int.Parse(Console.ReadLine());
+    } else if (userInput == "2"){
+        childrenNumber += 0;
+    } else {
+        DisplayError();
+        Pause();
+    }
+
+    System.Console.WriteLine("Did you arrive in an RV or other vehicle?\n1. RV\n2. Other Vehicle");
+    string userChoice = Console.ReadLine();
+    if(userChoice == "1"){
+        vehicleFee += 20;
+    } else if (userChoice == "2"){
+        vehicleFee += 10;
+    } else{
+        DisplayError();
+    }
+
+    double totalFees = ((attendeeNumber * TICKET - ((childrenNumber*TICKET)*CHILD_DISCOUNT)) + vehicleFee);
+
+    double feeFedTax = totalFees * FED_TAX;
+
+    if(attendeeNumber >= 6){
+        amountDue += feeFedTax + STATE_TAX;
+        System.Console.WriteLine("The amount due is " + amountDue);
+    } else if (attendeeNumber < 6){
+        amountDue += feeFedTax;
+        System.Console.WriteLine("The amount due is " + amountDue);
+    }
+
+    System.Console.WriteLine("Please enter the amount you are paying.");
+    double amountPaid = double.Parse(Console.ReadLine());
+
+    if(amountPaid < amountDue){
+        System.Console.WriteLine("Transaction cancelled due to insufficient funds. Please try again.");
+    } else if (amountPaid == amountDue){
+        System.Console.WriteLine("You have paid the amount due. Thank you and enjoy your stay at the state parks!");
+    } else if (amountPaid > amountDue){
+        System.Console.WriteLine("Transaction cancelled due to oversufficient funds. Please try again and pay only the amount due.");
+    }
     Pause();
 }
 
