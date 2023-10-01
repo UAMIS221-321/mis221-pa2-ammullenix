@@ -1,5 +1,6 @@
 ﻿//***** Menu *****
 
+DisplayLogo();
 DisplayMenu();
 
 // Priming Read
@@ -30,44 +31,86 @@ static void Route(string userChoice){
         }
     }
 }
-
+ static void DisplayLogo(){
+    System.Console.WriteLine(@"          /\
+         /**\
+        /****\   /\
+       /      \ /**\
+      /  /\    /    \        /\    /\  /\      /\            /\/\/\  /\
+     /  /  \  /      \      /  \/\/  \/  \  /\/  \/\  /\  /\/ / /  \/  \
+    /  /    \/ /\     \    /    \ \  /    \/ /   /  \/  \/  \  /    \   \
+   /  /      \/  \/\   \  /      \    /   /    \
+__/__/_______/___/__\___\__________________________________________________");
+ }
 
 // Compass
 
 static void DisplayCompass(){
     int degreesTurned = 0;
 
-System.Console.WriteLine("Welcome to the Compass! Let's retrace your steps.");
-//Priming Read
-string userInput = EnterDirection();
+    CompassLogo();
 
-while(userInput != "CANCEL"){
-    if(userInput == "right" || userInput == "Right" || userInput == "RIGHT"){
-        degreesTurned += 90;
-    } else if (userInput == "left" || userInput == "Left" || userInput == "LEFT"){
-        degreesTurned = degreesTurned - 90;
-    } else {
-        DisplayError();
+    System.Console.WriteLine("Welcome to the Compass! Let's retrace your steps.");
+    //Priming Read
+    string userInput = EnterDirection();
+
+    while(userInput != "CANCEL"){
+        if(userInput == "right" || userInput == "Right" || userInput == "RIGHT"){
+            degreesTurned += 90;
+        } else if (userInput == "left" || userInput == "Left" || userInput == "LEFT"){
+            degreesTurned = degreesTurned - 90;
+        } else {
+            DisplayError();
+        }
+        //Update Read
+        userInput = EnterDirection();
     }
-    //Update Read
-    userInput = EnterDirection();
-}
 
-if(degreesTurned == 90 || degreesTurned == -270){
-    System.Console.WriteLine("You are facing East.");
-} else if (degreesTurned == 180 || degreesTurned == -180){
-    System.Console.WriteLine("You are facing South.");
-} else if (degreesTurned == 270 || degreesTurned == -90){
-    System.Console.WriteLine("You are facing West.");
-} else if (degreesTurned == 360 || degreesTurned == 0){
-    System.Console.WriteLine("You are facing North.");
-} 
+    if(degreesTurned == 90 || degreesTurned == -270){
+        System.Console.WriteLine("You are facing East.");
+    } else if (degreesTurned == 180 || degreesTurned == -180){
+        System.Console.WriteLine("You are facing South.");
+    } else if (degreesTurned == 270 || degreesTurned == -90){
+        System.Console.WriteLine("You are facing West.");
+    } else if (degreesTurned == 360 || degreesTurned == 0){
+        System.Console.WriteLine("You are facing North.");
+    } 
     Pause();
 }
 
 static string EnterDirection(){
     System.Console.WriteLine("Did you turn right or left? Enter CANCEL to stop.");
     return Console.ReadLine();
+}
+
+static void CompassLogo(){
+    System.Console.WriteLine(@"|<><><><><><><><><><><><><><><><><><><><><><><>|
+|                      *                       |
+|   /\~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~/\    |
+|  (o )                .                ( o)   |
+|   \/               .` `.               \/    |
+|   /\             .`     `.             /\    |
+|  (             .`         `.             )   |
+|   )          .`      N      `.          (    |
+|  (         .`   A    |        `.         )   |
+|   )      .`     <\> )|(         `.      (    |
+|  (     .`         \  |  (         `.     )   |
+|   )  .`         )  \ |    (         `.  (    |
+|    .`         )     \|      (         `.     |
+|  .`     W---)--------O--------(---E     `.   |
+|   `.          )      |\     (          .`    |
+|   ) `.          )    | \  (          .` (    |
+|  (    `.          )  |  \          .`    )   |
+|   )     `.          )|( <\>      .`     (    |
+|  (        `.         |         .`        )   |
+|   )         `.       S       .`         (    |
+|  (            `.           .`            )   |
+|   \/            `.       .`            \/    |
+|   /\              `.   .`              /\    |
+|  (o )               `.`               ( o)   |
+|   \/~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~\/    |
+|                     -|-                   LGB|
+|<><><><><><><><><><><><><><><><><><><><><><><>|");
 }
 
 // End Compass
@@ -87,6 +130,7 @@ static void DisplayParkFees(){
 
     double amountDue = 0;
 
+    ParkFeesLogo();
     string decision = WelcomeParkFees();
 
     while(decision == "1"){
@@ -126,20 +170,20 @@ static void DisplayParkFees(){
 
         if(attendeeNumber >= 6){
             amountDue += feeFedTax + STATE_TAX;
-            System.Console.WriteLine("The amount due is " + amountDue);
+            System.Console.WriteLine("The amount due is " + Math.Round(amountDue, 2));
         } else if (attendeeNumber < 6){
             amountDue += feeFedTax;
-            System.Console.WriteLine("The amount due is " + amountDue);
+            System.Console.WriteLine("The amount due is " + Math.Round(amountDue, 2));
         }
 
         System.Console.WriteLine("Please enter the amount you are paying.");
         double amountPaid = double.Parse(Console.ReadLine());
 
-        if(amountPaid < amountDue){
+        if(amountPaid < Math.Round(amountDue, 2)){
             System.Console.WriteLine("Transaction cancelled due to insufficient funds. Please try again.");
-        } else if (amountPaid == amountDue){
+        } else if (amountPaid == Math.Round(amountDue, 2)){
             System.Console.WriteLine("You have paid the amount due. Thank you and enjoy your stay at the state parks!");
-        } else if (amountPaid > amountDue){
+        } else if (amountPaid > Math.Round(amountDue, 2)){
             System.Console.WriteLine("Transaction cancelled due to oversufficient funds. Please try again and pay only the amount due.");
         } else{
             DisplayError();
@@ -164,6 +208,18 @@ static string IfChildren(){
 static string VehicleFees(){
     System.Console.WriteLine("Did you arrive in an RV or other vehicle?\n1. RV\n2. Other Vehicle\n3. Exit");
     return Console.ReadLine();
+}
+
+static void ParkFeesLogo(){
+    System.Console.WriteLine(@"$$$$$$$\                     $$\             $$$$$$$$\                            
+$$  __$$\                    $$ |            $$  _____|                           
+$$ |  $$ |$$$$$$\   $$$$$$\  $$ |  $$\       $$ |    $$$$$$\   $$$$$$\   $$$$$$$\ 
+$$$$$$$  |\____$$\ $$  __$$\ $$ | $$  |      $$$$$\ $$  __$$\ $$  __$$\ $$  _____|
+$$  ____/ $$$$$$$ |$$ |  \__|$$$$$$  /       $$  __|$$$$$$$$ |$$$$$$$$ |\$$$$$$\  
+$$ |     $$  __$$ |$$ |      $$  _$$<        $$ |   $$   ____|$$   ____| \____$$\ 
+$$ |     \$$$$$$$ |$$ |      $$ | \$$\       $$ |   \$$$$$$$\ \$$$$$$$\ $$$$$$$  |
+\__|      \_______|\__|      \__|  \__|      \__|    \_______| \_______|\_______/ 
+                                                                                  ");
 }
 //End Visitor Fees
 
