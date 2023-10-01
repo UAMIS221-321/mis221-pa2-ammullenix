@@ -16,7 +16,7 @@ while (userChoice != "3"){
 // **** End Menu ****
 
 static void DisplayMenu(){
-    System.Console.WriteLine("Welcome to the ASLS's Parks website!\n1: Compass\n2: Vistor Fees\n3: Exit");
+    System.Console.WriteLine("Welcome to the ASPS's Parks application!\n1: Compass\n2: Park Fees\n3: Exit");
 }
 
 static void Route(string userChoice){
@@ -24,7 +24,7 @@ static void Route(string userChoice){
         DisplayCompass();
     } else {
         if(userChoice == "2"){
-        DisplayVisitorFees();
+        DisplayParkFees();
         } else{
             DisplayError();
         }
@@ -38,16 +38,18 @@ static void DisplayCompass(){
     int degreesTurned = 0;
 
 System.Console.WriteLine("Welcome to the Compass! Let's retrace your steps.");
+//Priming Read
 string userInput = EnterDirection();
 
 while(userInput != "CANCEL"){
-    if(userInput == "right"){
+    if(userInput == "right" || userInput == "Right" || userInput == "RIGHT"){
         degreesTurned += 90;
-    } else if (userInput == "left"){
+    } else if (userInput == "left" || userInput == "Left" || userInput == "LEFT"){
         degreesTurned = degreesTurned - 90;
     } else {
         DisplayError();
     }
+    //Update Read
     userInput = EnterDirection();
 }
 
@@ -72,7 +74,9 @@ static string EnterDirection(){
 
 //Visitor's Fees
 
-static void DisplayVisitorFees(){
+// A LOT of code ahead, I could not condense into methods for the life of me
+
+static void DisplayParkFees(){
     const double CHILD_DISCOUNT = 0.8;
     const double STATE_TAX = 5;
     const double FED_TAX = 1.09;
@@ -83,57 +87,84 @@ static void DisplayVisitorFees(){
 
     double amountDue = 0;
 
-    System.Console.WriteLine("Welcome to Park Fees!");
-    System.Console.WriteLine("Please enter the amount of attendees.");
-    int attendeeNumber = int.Parse(Console.ReadLine());
+    string decision = WelcomeParkFees();
 
-    System.Console.WriteLine("Do you have any children in your party?\n1. Yes\n2. No");
-    string userInput = Console.ReadLine();
-    if(userInput == "1"){
-        System.Console.WriteLine("Please enter the amount of children attending.");
-        childrenNumber += int.Parse(Console.ReadLine());
-    } else if (userInput == "2"){
-        childrenNumber += 0;
-    } else {
-        DisplayError();
+    while(decision == "1"){
+        System.Console.WriteLine("Please enter the amount of attendees.");
+        int attendeeNumber = int.Parse(Console.ReadLine());
+
+        string userInput = IfChildren();
+        //Must enter 3 to exit children discount
+        while(userInput != "3"){
+        if(userInput == "1"){
+            System.Console.WriteLine("Please enter the amount of children in your party.");
+            childrenNumber += int.Parse(Console.ReadLine());
+        } else if (userInput == "2"){
+         childrenNumber += 0;
+        } else {
+            DisplayError();
+        }
+        userInput = IfChildren();
+        }
+
+        string userChoice = VehicleFees();
+        //Must enter 3 to exit Vehicle Fees
+        while(userChoice != "3"){
+            if(userChoice == "1"){
+                vehicleFee += 20;
+            } else if (userChoice == "2"){
+                vehicleFee += 10;
+            } else{
+                DisplayError();
+            }
+            userChoice = VehicleFees();
+        }
+
+        double totalFees = ((attendeeNumber * TICKET - ((childrenNumber*TICKET)*CHILD_DISCOUNT)) + vehicleFee);
+
+        double feeFedTax = totalFees * FED_TAX;
+
+        if(attendeeNumber >= 6){
+            amountDue += feeFedTax + STATE_TAX;
+            System.Console.WriteLine("The amount due is " + amountDue);
+        } else if (attendeeNumber < 6){
+            amountDue += feeFedTax;
+            System.Console.WriteLine("The amount due is " + amountDue);
+        }
+
+        System.Console.WriteLine("Please enter the amount you are paying.");
+        double amountPaid = double.Parse(Console.ReadLine());
+
+        if(amountPaid < amountDue){
+            System.Console.WriteLine("Transaction cancelled due to insufficient funds. Please try again.");
+        } else if (amountPaid == amountDue){
+            System.Console.WriteLine("You have paid the amount due. Thank you and enjoy your stay at the state parks!");
+        } else if (amountPaid > amountDue){
+            System.Console.WriteLine("Transaction cancelled due to oversufficient funds. Please try again and pay only the amount due.");
+        } else{
+            DisplayError();
+        }
         Pause();
+        decision = WelcomeParkFees();
     }
-
-    System.Console.WriteLine("Did you arrive in an RV or other vehicle?\n1. RV\n2. Other Vehicle");
-    string userChoice = Console.ReadLine();
-    if(userChoice == "1"){
-        vehicleFee += 20;
-    } else if (userChoice == "2"){
-        vehicleFee += 10;
-    } else{
-        DisplayError();
-    }
-
-    double totalFees = ((attendeeNumber * TICKET - ((childrenNumber*TICKET)*CHILD_DISCOUNT)) + vehicleFee);
-
-    double feeFedTax = totalFees * FED_TAX;
-
-    if(attendeeNumber >= 6){
-        amountDue += feeFedTax + STATE_TAX;
-        System.Console.WriteLine("The amount due is " + amountDue);
-    } else if (attendeeNumber < 6){
-        amountDue += feeFedTax;
-        System.Console.WriteLine("The amount due is " + amountDue);
-    }
-
-    System.Console.WriteLine("Please enter the amount you are paying.");
-    double amountPaid = double.Parse(Console.ReadLine());
-
-    if(amountPaid < amountDue){
-        System.Console.WriteLine("Transaction cancelled due to insufficient funds. Please try again.");
-    } else if (amountPaid == amountDue){
-        System.Console.WriteLine("You have paid the amount due. Thank you and enjoy your stay at the state parks!");
-    } else if (amountPaid > amountDue){
-        System.Console.WriteLine("Transaction cancelled due to oversufficient funds. Please try again and pay only the amount due.");
-    }
-    Pause();
+    // Pause();
+    // decision = WelcomeParkFees();
 }
 
+static string WelcomeParkFees(){
+    System.Console.WriteLine("Welcome to Park Fees! Are you needing to calculate your dues?\n1. Yes\n2. No");
+    return Console.ReadLine();
+}
+
+static string IfChildren(){
+    System.Console.WriteLine("Do you have any children in your party?\n1. Yes\n2. No\n3. Exit");
+    return Console.ReadLine();
+}
+
+static string VehicleFees(){
+    System.Console.WriteLine("Did you arrive in an RV or other vehicle?\n1. RV\n2. Other Vehicle\n3. Exit");
+    return Console.ReadLine();
+}
 //End Visitor Fees
 
 static void DisplayError(){
