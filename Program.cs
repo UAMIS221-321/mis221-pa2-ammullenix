@@ -54,6 +54,7 @@ static void DisplayCompass(){
     //Priming Read
     string userInput = EnterDirection();
 
+    //Must enter CANCEL to exit, cannot distiguish upper and lowercase
     while(userInput != "CANCEL"){
         if(userInput == "right" || userInput == "Right" || userInput == "RIGHT"){
             degreesTurned += 90;
@@ -67,12 +68,16 @@ static void DisplayCompass(){
     }
 
     if(degreesTurned == 90 || degreesTurned == -270){
+        EastLogo();
         System.Console.WriteLine("You are facing East.");
     } else if (degreesTurned == 180 || degreesTurned == -180){
+        SouthLogo();
         System.Console.WriteLine("You are facing South.");
     } else if (degreesTurned == 270 || degreesTurned == -90){
+        WestLogo();
         System.Console.WriteLine("You are facing West.");
     } else if (degreesTurned == 360 || degreesTurned == 0){
+        NorthLogo();
         System.Console.WriteLine("You are facing North.");
     } 
     Pause();
@@ -113,6 +118,130 @@ static void CompassLogo(){
 |<><><><><><><><><><><><><><><><><><><><><><><>|");
 }
 
+static void NorthLogo(){
+    System.Console.WriteLine(@"|<><><><><><><><><><><><><><><><><><><><><><><>|
+|                      *                       |
+|   /\~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~/\    |
+|  (o )                .                ( o)   |
+|   \/               .` `.               \/    |
+|   /\             .`     `.             /\    |
+|  (             .`         `.             )   |
+|   )          .`      N      `.          (    |
+|  (         .`        ^        `.         )   |
+|   )      .`         <\>         `.      (    |
+|  (     .`            |  (         `.     )   |
+|   )  .`         )    |    (         `.  (    |
+|    .`         )      |      (         `.     |
+|  .`     W---)--------O--------(---E     `.   |
+|   `.          )      |      (          .`    |
+|   ) `.          )    |    (          .` (    |
+|  (    `.          )  |             .`    )   |
+|   )     `.          )|(          .`     (    |
+|  (        `.         |         .`        )   |
+|   )         `.       S       .`         (    |
+|  (            `.           .`            )   |
+|   \/            `.       .`            \/    |
+|   /\              `.   .`              /\    |
+|  (o )               `.`               ( o)   |
+|   \/~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~\/    |
+|                     -|-                   LGB|
+|<><><><><><><><><><><><><><><><><><><><><><><>|
+");
+}
+
+static void EastLogo(){
+    System.Console.WriteLine(@"|<><><><><><><><><><><><><><><><><><><><><><><>|
+|                      *                       |
+|   /\~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~/\    |
+|  (o )                .                ( o)   |
+|   \/               .` `.               \/    |
+|   /\             .`     `.             /\    |
+|  (             .`         `.             )   |
+|   )          .`      N      `.          (    |
+|  (         .`        |        `.         )   |
+|   )      .`         )|(         `.      (    |
+|  (     .`         )  |  (         `.     )   |
+|   )  .`         )    |    (         `.  (    |
+|    .`         )      |      (   ^     `.     |
+|  .`     W---)--------O--------(-/>E     `.   |
+|   `.          )      |      (   v      .`    |
+|   ) `.          )    |    (          .` (    |
+|  (    `.          )  |  (          .`    )   |
+|   )     `.          )|(          .`     (    |
+|  (        `.         |         .`        )   |
+|   )         `.       S       .`         (    |
+|  (            `.           .`            )   |
+|   \/            `.       .`            \/    |
+|   /\              `.   .`              /\    |
+|  (o )               `.`               ( o)   |
+|   \/~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~\/    |
+|                     -|-                   LGB|
+|<><><><><><><><><><><><><><><><><><><><><><><>|
+");
+}
+
+static void SouthLogo(){
+    System.Console.WriteLine(@"|<><><><><><><><><><><><><><><><><><><><><><><>|
+|                      *                       |
+|   /\~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~/\    |
+|  (o )                .                ( o)   |
+|   \/               .` `.               \/    |
+|   /\             .`     `.             /\    |
+|  (             .`         `.             )   |
+|   )          .`      N      `.          (    |
+|  (         .`        |        `.         )   |
+|   )      .`         )|(         `.      (    |
+|  (     .`            |  (         `.     )   |
+|   )  .`         )    |    (         `.  (    |
+|    .`         )      |      (         `.     |
+|  .`     W---)--------O--------(---E     `.   |
+|   `.          )      |      (          .`    |
+|   ) `.          )    |    (          .` (    |
+|  (    `.          )  |             .`    )   |
+|   )     `.          </>          .`     (    |
+|  (        `.         v         .`        )   |
+|   )         `.       S       .`         (    |
+|  (            `.           .`            )   |
+|   \/            `.       .`            \/    |
+|   /\              `.   .`              /\    |
+|  (o )               `.`               ( o)   |
+|   \/~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~\/    |
+|                     -|-                   LGB|
+|<><><><><><><><><><><><><><><><><><><><><><><>|
+");
+}
+
+static void WestLogo(){
+    System.Console.WriteLine(@"|<><><><><><><><><><><><><><><><><><><><><><><>|
+|                      *                       |
+|   /\~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~/\    |
+|  (o )                .                ( o)   |
+|   \/               .` `.               \/    |
+|   /\             .`     `.             /\    |
+|  (             .`         `.             )   |
+|   )          .`      N      `.          (    |
+|  (         .`        |        `.         )   |
+|   )      .`         )|(         `.      (    |
+|  (     .`         )  |  (         `.     )   |
+|   )  .`         )    |    (         `.  (    |
+|    .`     ^   )      |      (         `.     |
+|  .`     W<\-)--------O--------(---E     `.   |
+|   `.      v   )      |      (          .`    |
+|   ) `.          )    |    (          .` (    |
+|  (    `.          )  |  (          .`    )   |
+|   )     `.          )|(          .`     (    |
+|  (        `.         |         .`        )   |
+|   )         `.       S       .`         (    |
+|  (            `.           .`            )   |
+|   \/            `.       .`            \/    |
+|   /\              `.   .`              /\    |
+|  (o )               `.`               ( o)   |
+|   \/~~~~~~~~~~~~~~~~~|~~~~~~~~~~~~~~~~~\/    |
+|                     -|-                   LGB|
+|<><><><><><><><><><><><><><><><><><><><><><><>|
+");
+}
+
 // End Compass
 
 //Visitor's Fees
@@ -131,6 +260,7 @@ static void DisplayParkFees(){
     double amountDue = 0;
 
     ParkFeesLogo();
+    //Priming read
     string decision = WelcomeParkFees();
 
     while(decision == "1"){
@@ -176,23 +306,46 @@ static void DisplayParkFees(){
             System.Console.WriteLine("The amount due is " + Math.Round(amountDue, 2));
         }
 
+        double amountDueRounded = Math.Round(amountDue, 2);
+
         System.Console.WriteLine("Please enter the amount you are paying.");
         double amountPaid = double.Parse(Console.ReadLine());
 
-        if(amountPaid < Math.Round(amountDue, 2)){
-            System.Console.WriteLine("Transaction cancelled due to insufficient funds. Please try again.");
-        } else if (amountPaid == Math.Round(amountDue, 2)){
-            System.Console.WriteLine("You have paid the amount due. Thank you and enjoy your stay at the state parks!");
-        } else if (amountPaid > Math.Round(amountDue, 2)){
-            System.Console.WriteLine("Transaction cancelled due to oversufficient funds. Please try again and pay only the amount due.");
-        } else{
-            DisplayError();
+        //Prompts user for amount due, remaining, and change if they overpay
+        if(amountPaid > 0){
+            if(amountPaid > amountDueRounded){
+                double changeAmount = amountPaid - amountDueRounded;
+                System.Console.WriteLine($"Your change is {changeAmount}");
+            } 
+             else if(amountPaid < amountDueRounded){
+                while(amountDue > 0.0){
+                    double amountRemaining = amountDueRounded - amountPaid;
+                    double amountRemainRounded = Math.Round(amountRemaining, 2);
+                    System.Console.WriteLine($"Your amount remaining is {amountRemainRounded}\nPlease enter the amount you are paying.");
+                    double remainingPaid = double.Parse(Console.ReadLine());
+                    if(remainingPaid == amountRemaining){
+                        System.Console.WriteLine("You have paid the amount due. Thank you and enjoy your time at the state parks!");
+                        amountDue = 0.0;
+                    }
+                    if (remainingPaid > amountRemaining){
+                        double remainingChange = remainingPaid - amountRemaining;
+                        System.Console.WriteLine($"Your change is {remainingChange}");
+                        amountDue = 0.0;
+                    }
+                }
+            } 
+             else if (amountPaid == amountDueRounded){
+                System.Console.WriteLine("You have paid the amount due. Thank you and enjoy your time at the state parks!");
+            } 
+             else {
+                DisplayError();
+            }
         }
+        
         Pause();
+        //Update Read
         decision = WelcomeParkFees();
     }
-    // Pause();
-    // decision = WelcomeParkFees();
 }
 
 static string WelcomeParkFees(){
