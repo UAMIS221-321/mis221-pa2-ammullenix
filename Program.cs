@@ -294,6 +294,7 @@ static void DisplayParkFees(){
             userChoice = VehicleFees();
         }
 
+        //Figuring out totals and taxes
         double totalFees = ((attendeeNumber * TICKET - ((childrenNumber*TICKET)*CHILD_DISCOUNT)) + vehicleFee);
 
         double feeFedTax = totalFees * FED_TAX;
@@ -308,14 +309,15 @@ static void DisplayParkFees(){
 
         double amountDueRounded = Math.Round(amountDue, 2);
 
+        //Prompts user for amount due, remaining, and change if they overpay
         System.Console.WriteLine("Please enter the amount you are paying.");
         double amountPaid = double.Parse(Console.ReadLine());
 
-        //Prompts user for amount due, remaining, and change if they overpay
         if(amountPaid > 0){
             if(amountPaid > amountDueRounded){
                 double changeAmount = amountPaid - amountDueRounded;
-                System.Console.WriteLine($"Your change is {changeAmount}");
+                double changeRounded = Math.Round(changeAmount, 2);
+                System.Console.WriteLine($"Your change is {changeRounded}. Thank you!");
             } 
              else if(amountPaid < amountDueRounded){
                 while(amountDue > 0.0){
@@ -329,7 +331,8 @@ static void DisplayParkFees(){
                     }
                     if (remainingPaid > amountRemaining){
                         double remainingChange = remainingPaid - amountRemaining;
-                        System.Console.WriteLine($"Your change is {remainingChange}");
+                        double remainChangeRound = Math.Round(remainingChange, 2);
+                        System.Console.WriteLine($"Your change is {remainChangeRound}");
                         amountDue = 0.0;
                     }
                 }
@@ -349,17 +352,17 @@ static void DisplayParkFees(){
 }
 
 static string WelcomeParkFees(){
-    System.Console.WriteLine("Welcome to Park Fees! Are you needing to calculate your dues?\n1. Yes\n2. No");
+    System.Console.WriteLine("Welcome to Park Fees! Are you needing to calculate your dues?\nEnter 1 for Yes and 2 for No.\n1. Yes\n2. No");
     return Console.ReadLine();
 }
 
 static string IfChildren(){
-    System.Console.WriteLine("Do you have any children in your party?\n1. Yes\n2. No\n3. Exit");
+    System.Console.WriteLine("Do you have any children in your party?\nEnter 1 for Yes and 2 for No, and press 3 to exit children's fees.\n1. Yes\n2. No\n3. Exit");
     return Console.ReadLine();
 }
 
 static string VehicleFees(){
-    System.Console.WriteLine("Did you arrive in an RV or other vehicle?\n1. RV\n2. Other Vehicle\n3. Exit");
+    System.Console.WriteLine("Did you arrive in an RV or other vehicle?\nEnter 1 for RVs and 2 for Other Vehicles, and press 3 to exit Vehicle Fees\n1. RV\n2. Other Vehicle\n3. Exit");
     return Console.ReadLine();
 }
 
